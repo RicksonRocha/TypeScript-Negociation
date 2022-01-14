@@ -5,7 +5,8 @@
         "noEmitOnError": true,
         "noImplicitAny": true,
         "removeComments": true, //remove os coments nos arqv js de dist no momento da compilação
-        "strictNullChecks": true //obriga o dev a tratar possíveis retornos nulos de api's, p.ex., querySelector
+        "strictNullChecks": true, //obriga o dev a tratar possíveis retornos nulos de api's, p.ex., querySelector
+        "experimentalDecorators": true //habilita decorators
     },
     "include": ["app/**/*"]
 }

@@ -3,7 +3,9 @@
         "outDir": "dist/js",
         "target": "ES6",
         "noEmitOnError": true,
-        "noImplicitAny": true
+        "noImplicitAny": true,
+        "removeComments": true, //remove os coments nos arqv js de dist no momento da compilação
+        "strictNullChecks": true //obriga o dev a tratar possíveis retornos nulos de api's, p.ex., querySelector
     },
     "include": ["app/**/*"]
 }

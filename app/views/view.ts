@@ -4,7 +4,14 @@ export abstract class View<T> { // classe com método abstrato não pode ser ins
     private escapar: boolean = false;
 
     constructor(seletor: string, escapar?: boolean) {
-        this.elemento = document.querySelector(seletor);
+
+        const elemento = document.querySelector(seletor);
+        if (elemento) {
+            this.elemento = elemento as HTMLInputElement        
+        } else {
+            throw Error(`Seletor ${seletor} não existe no DOM`)
+        }
+        
         if (escapar){
             this.escapar = escapar
         }

@@ -1,0 +1,1 @@
+Um model define o modelo de(os) dado(s)

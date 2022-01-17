@@ -4,8 +4,11 @@ import { MensagemView } from '../views/mensagem-view.js';
 import { DiasDaSemana } from '../enums/dias-da-semana.js';
 import { NegociacoesView } from '../views/negociacoes-view.js';
 
-//Decorator
+//Decorators
 import { domInjector } from '../decorators/dom-injector.js';
+
+//Service
+import { NegociacoesService } from '../services/negociacoes-service.js';
 
 export class NegociacaoController {
     @domInjector('#data')
@@ -18,6 +21,7 @@ export class NegociacaoController {
     private negociacoes = new Negociacoes();
     private negociacoesView = new NegociacoesView('#negociacoesView', true);
     private mensagemView = new MensagemView('#mensagemView');
+    private negociacoesService = new NegociacoesService();
 
     constructor() {
         //o querySelector pode retornar um HTMLInputElement ou null. A notação <HTMLInputElement> explicita p/ o compiler tsc que inputData é um HTMLInputElement
@@ -43,6 +47,17 @@ export class NegociacaoController {
         this.negociacoes.adiciona(negociacao);
         this.limparFormulario();
         this.atualizaView();
+    }
+
+    importaDados(): void {
+        this.negociacoesService
+            .obterNegociacoes()
+            .then(negociacoesDeHoje => {
+                for (let negociacao of negociacoesDeHoje){
+                    this.negociacoes.adiciona(negociacao)
+                }
+                this.negociacoesView.update(this.negociacoes)
+            })
     }
 
     public ehDiaUtil(data: Date){

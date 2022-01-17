@@ -2,13 +2,16 @@
 <h2>O que é esse projeto?</h2>
 <p>Projeto desenvolvido durante formação typescript da Alura</p>
 <ol>
-  <li>Integração com <a href="https://www.themoviedb.org/documentation/api">API</a></li>
-  <li>Componentes reativos</li>
-  <li>Estilização componentizada</li>
+  <li>Object-oriented programming</li>
+  <li>Generics, Types, Classes</li>
+  <li>Models, Views and Controllers</li>
+  <li>Decorators</li>
+  <li>External API and interface</li>
 </ol>
 <h2>Tecnologias usadas:</h2>
 <ul>
   <li>Typescript</li>
+  <li>Node.js</li>
   <li>Bootstrap</li>
 </ul>
 

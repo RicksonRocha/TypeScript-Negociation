@@ -1,9 +1,21 @@
-export class Negociacao {
+import { Imprimivel } from "../utils/imprimivel.js";
+
+export class Negociacao implements Imprimivel {
     constructor(
         private _data: Date, 
         public readonly quantidade: number, 
         public readonly valor: number
-    ) {}
+    ) {
+        //super() --> garante a chamada do construtor da class pai, pois esta filha também tem um constructor
+    }
+
+    public static criaDe(dataStr: string, quantidadeStr: string, valorStr: string){ //static: permite chamar o método como objeto sem instaciar a classe
+        const exp = /-/g;
+        const date = new Date(dataStr.replace(exp, ','));
+        const quantidade = parseInt(quantidadeStr);
+        const valor = parseFloat(valorStr);
+        return new Negociacao(date, quantidade, valor);
+    }
 
     get volume(): number {
         return this.quantidade * this.valor;
@@ -14,11 +26,12 @@ export class Negociacao {
         return data;
     }
 
-    public static criaDe(dataStr: string, quantidadeStr: string, valorStr: string){ //static: permite chamar o método como objeto sem instaciar a classe
-        const exp = /-/g;
-        const date = new Date(dataStr.replace(exp, ','));
-        const quantidade = parseInt(quantidadeStr);
-        const valor = parseFloat(valorStr);
-        return new Negociacao(date, quantidade, valor);
+    public paraTexto(): string {
+        return (`
+            Data: ${this.data},
+            Quantidade: ${this.quantidade},
+            Valor:  ${this.valor}
+        `)
     }
+
 }
